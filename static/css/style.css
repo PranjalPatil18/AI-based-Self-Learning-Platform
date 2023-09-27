@@ -1,0 +1,49 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Itim", cursive;
+}
+img {
+  height: 100vh;
+  width: 100%;
+}
+a {
+  cursor: pointer;
+}
+button {
+  cursor: pointer;
+}
+.nav-links:active,
+.nav-links:hover {
+  color: black;
+}
+
+.nav-links {
+  color: rgba(0, 0, 0, 0.599);
+}
+.welcome-container {
+  top: 20%;
+  background-color: rgba(255, 255, 255, 0.122);
+  height: 300px;
+  backdrop-filter: blur(20px);
+}
+.welcome-heading-1 {
+  font-size: 40px;
+  text-transform: uppercase;
+}
+.welcome-heading-2 {
+  top: 0;
+  font-size: 64px;
+  text-transform: uppercase;
+}
+.navbar {
+  width: 100%;
+  background-color: white;
+  z-index: 99;
+}
+.missing {
+  background-color: red;
+}

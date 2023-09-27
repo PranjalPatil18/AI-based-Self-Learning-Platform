@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% block title %}Results{% endblock title %}
+{% block body %}
+
+<section class="p-5">
+    <div class="card w-75 mx-auto mt-5">
+        <div class="m-3">
+            <div class="row col-12">
+                <div class="col-8">
+                    <h3>Paragraph : </h3>
+                    <p class="para">
+                        {{store_para.para}}
+                    </p>
+                </div>
+                <div class="col-4">
+                    <h5 class="text-center">Reading Accuraccy:</h5>
+                    <h2 class="text-danger"> {{store_para.progress}}%</h2>
+                </div>
+            </div>
+            
+            <div class="row col-10 m-auto">
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <table class="table mx-auto mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Word</th>
+                                <th scope="col">Pronounciation</th>
+                                <th scope="col">Meaning</th>
+                            </tr>
+                        </thead>
+                        
+                        {% for key,value in meaning.items %}
+                        <tbody>
+                            <tr>
+                                <td >{{key}}</td>
+                                <td><button class="btn btn-sm" type="submit" name = "key" value="{{ key }}"><i class="fa fa-volume-up" aria-hidden="true"></i></button></td>
+                                <td >{{value}}</td>
+                            </tr>
+                        </tbody>
+                        {% endfor %}
+                    </table>
+                </form>
+            </div>
+            <div class="d-flex justify-content-center gap-2 mt-3">
+                <a class="btn btn-primary btn-lg px-2 py-1" href="dashboard">
+                    Next
+                </a>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock body %}

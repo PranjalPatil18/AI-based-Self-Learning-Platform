@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block title %}Dashboard{% endblock title %}
+{% block body %}
+{% if user.is_authenticated %}
+
+<!-- paragraph reading -->
+
+<section class="p-5">
+
+    <div class="card mb-3 w-75 mx-auto p-5 mt-5">
+        <h1 class="text-center m-5">Passage Reading</h1>
+        <h3>Paragraph for Reading : </h3>
+        <p class="para">
+            {{store_para.para}}
+        </p>
+        <h5 class="text-danger">Recording Ended...</h5>
+    </div>
+    <div class="d-flex justify-content-center gap-2">
+        <a class="btn btn-dark" href="dashboard">Go to Dashboard</a>
+    </div>
+</section>
+
+{% endif %}
+{% endblock body %}

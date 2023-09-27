@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock title %}
+
+{% block body %}
+
+<section>
+    <div id="carouselExampleIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+            <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+            <div class="carousel-item active position-relative">
+                <div class="welcome-container carousel-caption d-none d-md-block position-absolute shadow rounded">
+                    <p class="welcome-heading-1">Welcome To</p>
+                    <p class="welcome-heading-2 text-danger fw-bold">SELF READING</p>
+                    <a class="btn btn-light btn-lg m-2 px-2 py-1" href="log_in">Login</a>
+                    <a class="btn btn-light btn-lg m-2 px-2 py-1" href="register"> Register </a>
+                </div>
+                <img src="static/img/christin-hume-k2Kcwkandwg-unsplash.jpg" class="d-block w-100" alt="..." />
+            </div>
+            <div class="carousel-item position-relative">
+                <div class="welcome-container carousel-caption d-none d-md-block position-absolute shadow rounded">
+                    <p class="welcome-heading-1">Welcome To</p>
+                    <p class="welcome-heading-2 text-danger fw-bold">SELF READING</p>
+                    <a class="btn btn-light btn-lg px-2 py-1 m-2" href="log_in">Login</a>
+                    <a class="btn btn-light btn-lg px-2 py-1 m-2" href="register">
+                        Register
+                    </a>
+                </div>
+                <img src="static/img/thought-catalog-OJZB0VUQKKc-unsplash.jpg" class="d-block" alt="..." />
+            </div>
+            <div class="carousel-item position-relative">
+                <div class="welcome-container carousel-caption d-none d-md-block position-absolute shadow rounded">
+                    <p class="welcome-heading-1">Welcome To</p>
+                    <p class="welcome-heading-2 text-danger fw-bold">SELF READING</p>
+                    <a class="btn btn-light btn-lg px-2 py-1 m-2" href="log_in">Login</a>
+                    <a class="btn btn-light btn-lg px-2 py-1 m-2" href="register">
+                        Register
+                    </a>
+                </div>
+                <img src="static/img/joel-muniz-XqXJJhK-c08-unsplash.jpg" class="d-block w-100" alt="..." />
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</section>
+
+{% endblock body %}

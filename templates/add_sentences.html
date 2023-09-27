@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title %}Sentences{% endblock title %}
+{% block body %}
+
+{% if user.is_authenticated %}
+
+<section class="p-5">
+
+    <form action="" method="post">
+        <div class="container w-100 shadow mt-5 p-5">
+            {% csrf_token %}
+            <h1 class="text-center">Add Sentences</h1>
+            <div class="row col-12">
+                <div class="col-6" style="height: 400px; overflow: auto;">
+                    <table class="table mx-auto mb-0">
+                        <thead>
+                            <tr>
+                                <th scope="col">Sentences/ Paragraph</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for sentence in sen %}
+                            <tr>
+                                <td>{{sentence.qus}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="col-6">
+                    <label for="exampleFormControlInput1" class="form-label mt-3">Enter New Sentences / Paragraph<span
+                            class="text-danger">*</span></label>
+                    {{form.sentence}}
+                    <div class="d-flex justify-content-center mt-5">
+                        <button class="btn btn-outline-dark btn-lg px-2 py-1" type="submit">
+                            Add
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+</section>
+
+{% endif %}
+
+{% endblock body %}

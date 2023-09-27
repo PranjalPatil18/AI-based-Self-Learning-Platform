@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
+    <link rel="stylesheet" href="static/css/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Itim&display=swap" rel="stylesheet" />
+    <title>{% block title %}Home{% endblock title %} | Self Reading</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: "Itim", cursive;
+      }
+      img {
+        height: 100vh;
+        width: 100%;
+      }
+      a {
+        cursor: pointer;
+      }
+      button {
+        cursor: pointer;
+      }
+      .nav-links:active,
+      .nav-links:hover {
+        color: black;
+      }
+      
+      .nav-links {
+        color: rgba(0, 0, 0, 0.599);
+      }
+      .welcome-container {
+        top: 20%;
+        background-color: rgba(255, 255, 255, 0.122);
+        height: 300px;
+        backdrop-filter: blur(20px);
+      }
+      .welcome-heading-1 {
+        font-size: 40px;
+        text-transform: uppercase;
+      }
+      .welcome-heading-2 {
+        top: 0;
+        font-size: 64px;
+        text-transform: uppercase;
+      }
+      .navbar {
+        width: 100%;
+        background-color: white;
+        z-index: 99;
+      }
+      .missing {
+        background-color: red;
+      }
+      
+</style>
+<body>
+    <nav class="navbar d-flex align-items-center p-2 px-4 shadow position-fixed">
+        <span class="fs-4 text-uppercase fw-bold">Self Reading</span>
+
+        <ul class="d-flex align-items-center ms-auto my-3 list-unstyled gap-5 fs-5">
+            {% if user.is_authenticated %}
+              {% if user.username == 'admin@gmail.com'%}
+                <li><a class="nav-links text-decoration-none p-1 rounded" href="add_sentences">Add Sentences</a></li>
+                <li><a class="nav-links text-decoration-none p-1 rounded" href="log_out">Logout | <i class="fa fa-sign-out"></i></a></li>
+                
+              {% else %}
+                <li><a class="nav-links text-decoration-none p-1 rounded" href="log_out">Logout | <i class="fa fa-sign-out"></i></a></li>
+              {% endif %}
+            {% else %}
+              <li><a class="nav-links {% if navbar == 'home' %} active {% endif %}" href="/">Home</a></li>
+              <li><a class="nav-links {% if navbar == 'log_in' %} active {% endif %}" href="log_in">Login</a></li>
+              <li><a class="nav-links {% if navbar == 'register' %} active {% endif %}" href="register">Register</a></li>
+            {% endif %}
+        </ul>
+    </nav>
+
+    {% for message in messages %} 
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      {% if message.tags == 'success' %}
+      <script>
+        var m = "{{ message }}"
+        swal("Success !", m , 'success')
+      </script>
+      {% elif message.tags == 'danger' %}
+      <script>
+        var m = "{{ message }}"
+        swal("Error !", m , 'error')
+      </script>
+      {% elif message.tags == 'info' %}
+      <script>
+        var m = "{{ message }}"
+        swal("Alert !", m , 'info')
+      </script>
+      {% endif %}
+
+    {% endfor %}
+
+    {% block body %}
+    
+    {% endblock body %}
+</body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous">
+  </script>
+  <script>
+    var data = JSON.parse('{{ data|escapejs }}');
+
+    var ctx = document.getElementById('pie-chart').getContext('2d');
+    var chart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: data.labels,
+            datasets: [{
+                data: data.data,
+                backgroundColor: data.backgroundColor
+            }]
+        }
+    });
+</script>
+</html>
